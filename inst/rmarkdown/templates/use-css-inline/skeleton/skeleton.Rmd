@@ -21,7 +21,6 @@ library(tidyverse) # for data wrangling
 library(kableExtra) # for extra table functionality
 library(table1) # to create pretty table 1s
 library(khroma) # for color-blind friendly colors
-library(Hmisc) # for a hiding TOC
 
 # Reference:
 # cookbook            https://bookdown.org/yihui/rmarkdown-cookbook/
@@ -35,10 +34,21 @@ library(Hmisc) # for a hiding TOC
 ```{css, echo=FALSE}
 /* Put any additional styling you want in here */
 
-.table-hover > tbody > tr:hover { /* Allows color to change on hover for kableExtra */
-  background-color: #00A99D;
-  color: white;
-  font-weight: bold;
+div.main-container { /* Makes the report wider, to allow for wider figures and less margin/white space */
+  max-width: 1600px !important;
+}
+
+body{ /* Change font and size of plain text to be larger */
+  font-family: Helvetica;
+  font-size: 12pt;
+}
+
+code.r{ /* Make the r chunk code text larger */
+  font-size: 16px;
+}
+
+pre { /* Make the r chunk output text larger */
+  font-size: 16px
 }
 
 mark { /* Allows you to highlight using tags in text */
@@ -46,10 +56,10 @@ mark { /* Allows you to highlight using tags in text */
   color: black;
 }
 
-body{ /* Change font and size */
-  font-family: Helvetica;
-  font-size: 12pt;
-  margins: 200px; /* Only works if you're hiding the TOC with Hmisc */
+.table-hover > tbody > tr:hover { /* Allows color to change on hover for kableExtra */
+  background-color: #00A99D;
+  color: white;
+  font-weight: bold;
 }
 
 .graybox { /* Add gray box behind text */
@@ -59,17 +69,7 @@ body{ /* Change font and size */
   border: 2px solid black;
 }
 
-code.r{
-  font-size: 16px;
-}
-
-pre {
-  font-size: 16px
-}
-
 ```
-
-` r Hmisc::hidingTOC()` To hide the TOC and make the usable area wider, delete the space between ` and r. Not needed for most reports.
 
 <br>
 
